@@ -12,6 +12,7 @@ void variables(){
         'name is $name, year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is $image'
     );
 }
+
 void main(List<String> args){
     //变量
     variables();
