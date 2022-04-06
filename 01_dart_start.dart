@@ -49,9 +49,65 @@ void builtinTypes(){
     assert(map2['3'] == null);//查找键值对为空
     assert(map2.length == 3);
 }
+//函数
+void function(){
+    //可选参数与不可选参数
+    String say(String from, String msg, [String? device]) {
+      var result = '$from says $msg';
+      if (device != null) {
+        result = '$result with a $device';
+      }
+      return result;
+    }
+    assert(say('Bob', 'Howdy') == 'Bob says Howdy');
+    assert(say('Bob', 'Howdy', 'smoke signal') ==
+    'Bob says Howdy with a smoke signal');
+    //将函数作为参数传递
+    void printElement(int element) {
+      print(element);
+    }
+    var nlist = [1, 2, 3];
+    nlist.forEach(printElement);
+    //将函数值赋给一个变量
+    var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+    assert(loudify('hello') == '!!! HELLO !!!');
+    //匿名函数
+    const nlist1 = ['apples', 'bananas', 'oranges'];
+    nlist1.forEach((item) {
+      print('${nlist1.indexOf(item)}: $item');
+    });
+}
+void foo() {} // A top-level function
 
+class A {
+  static void bar() {} // A static method
+  void baz() {} // An instance method
+}
 void main(List<String> args){
     //变量
     variables();
     builtinTypes();
+      Function x;
+
+  // Comparing top-level functions.
+  x = foo;
+  assert(foo == x);
+
+  // Comparing static methods.
+  x = A.bar;
+  assert(A.bar == x);
+
+  // Comparing instance methods.
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
+  var y = w;
+  x = w.baz;
+
+  // These closures refer to the same instance (#2),
+  // so they're equal.
+  assert(y.baz == x);
+
+  // These closures refer to different instances,
+  // so they're unequal.
+  assert(v.baz != w.baz);
 }
