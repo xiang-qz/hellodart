@@ -64,8 +64,6 @@ void numbers_collection_String_more() {
 
   // greetingTemplate didn't change.
   assert(greeting != greetingTemplate);
-
-
 }
 
 void main(List<String> args) {
