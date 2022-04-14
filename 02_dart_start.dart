@@ -1,90 +1,98 @@
-   
 //变量
-void variables(){
-    var name = "voryager I";
-    var year = 1977;
-    var antennaDiameter = 3.7;
-    var flybyObjects = ['Jupter','Saturn','Uranus','Neptune'];
-    var image = {
-        'tags': ['Saturns'],
-        'url': 'path//to//Saturn.jpg'
-    };
+void variables() {
+  var name = "voryager I";
+  var year = 1977;
+  var antennaDiameter = 3.7;
+  var flybyObjects = ['Jupter', 'Saturn', 'Uranus', 'Neptune'];
+  var image = {
+    'tags': ['Saturns'],
+    'url': 'path//to//Saturn.jpg'
+  };
 
-    print(
-        'name is $name, year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is $image'
-    );
+  print(
+      'name is $name, year is $year,antennaDiameter is $antennaDiameter,flybyObjects is $flybyObjects,image is $image');
 }
+
 //内置类型
-void builtinTypes(){
-    num x=1;
-    x +=2.5;
-    print('x的值为$x');
-    // String -> int
-    var one = int.parse('1');
-    assert(one == 1);
-    // double -> String
-    String piAsString = 3.14159.toStringAsFixed(2);
-    assert(piAsString == '3.14');
-    var s1 = 'string';
-    "interpolation";
-    var s2 = '''which is handy.''';
-    print('Dart has $s1,'+s2);
-    var list = [1, 2, 3];
-    var list2 = [0, ...list];//...扩展操作符实现元素的插入
-    assert(list2.length == 1);
-    var set1 = {'A', 'B', 'C', 'D', 'E'};//创建set集合
-    var set2 = <String>{};//创建空集合
-    set2.add('B');//添加元素
-    set2.addAll(set1);//添加set1中所有元素到set2
-    assert(set2.length == 5);
-    //Map类型
-    var map1 ={
-      'first' : 'A',
-      'second' : 'B'
-    };
-    var map2 = Map<int,String>();//使用map构造器创建map
-    map2[2] = "AB";
-    map2[8] = "cdf";
-    map2[6] = "添加键值对";
-    assert(map2['2'] == 'AB');//查找键值对
-    assert(map2['3'] == null);//查找键值对为空
-    assert(map2.length == 3);
+void builtinTypes() {
+  num x = 1;
+  x += 2.5;
+  print('x的值为$x');
+  // String -> int
+  var one = int.parse('1');
+  assert(one == 1);
+  // double -> String
+  String piAsString = 3.14159.toStringAsFixed(2);
+  assert(piAsString == '3.14');
+  var s1 = 'string';
+  "interpolation";
+  var s2 = '''which is handy.''';
+  print('Dart has $s1,' + s2);
+  var list = [1, 2, 3];
+  var list2 = [0, ...list]; //...扩展操作符实现元素的插入
+  print(list2.length);
+  //assert(list2.length == 4);
+  var set1 = {'A', 'B', 'C', 'D', 'E'}; //创建set集合
+  var set2 = <String>{}; //创建空集合
+  set2.add('B'); //添加元素
+  set2.addAll(set1); //添加set1中所有元素到set2
+  assert(set2.length == 5);
+  //Map类型
+  var map1 = {'first': 'A', 'second': 'B'};
+  // hawaiianBeaches.forEach((k, v) {
+  //print('I want to visit $k and swim at $v');
+  map1.forEach((k, v) {
+    print('$k aiphabet is $v');
+  });
+  var map2 = Map<int, String>(); //使用map构造器创建map
+  map2[2] = "AB";
+  map2[8] = "cdf";
+  map2[6] = "添加键值对";
+
+  assert(map2['2'] == 'AB'); //查找键值对
+  assert(map2['3'] == null); //查找键值对为空
+  assert(map2.length == 3);
 }
+
 //函数
-void function(){
-    //可选参数与不可选参数
-    String say(String from, String msg, [String? device]) {
-      var result = '$from says $msg';
-      if (device != null) {
-        result = '$result with a $device';
-      }
-      return result;
+void function() {
+  //可选参数与不可选参数
+  String say(String from, String msg, [String? device]) {
+    var result = '$from says $msg';
+    if (device != null) {
+      result = '$result with a $device';
     }
-    assert(say('Bob', 'Howdy') == 'Bob says Howdy');
-    assert(say('Bob', 'Howdy', 'smoke signal') ==
-    'Bob says Howdy with a smoke signal');
-    //将函数作为参数传递
-    void printElement(int element) {
-      print(element);
-    }
-    var nlist = [1, 2, 3];
-    nlist.forEach(printElement);
-    //将函数值赋给一个变量
-    var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
-    assert(loudify('hello') == '!!! HELLO !!!');
-    //匿名函数
-    const nlist1 = ['apples', 'bananas', 'oranges'];
-    nlist1.forEach((item) {
-      print('${nlist1.indexOf(item)}: $item');
-    });
+    return result;
+  }
+
+  assert(say('Bob', 'Howdy') == 'Bob says Howdy');
+  assert(say('Bob', 'Howdy', 'smoke signal') ==
+      'Bob says Howdy with a smoke signal');
+  //将函数作为参数传递
+  void printElement(int element) {
+    print(element);
+  }
+
+  var nlist = [1, 2, 3];
+  nlist.forEach(printElement);
+  //将函数值赋给一个变量
+  var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+  assert(loudify('hello') == '!!! HELLO !!!');
+  //匿名函数
+  const nlist1 = ['apples', 'bananas', 'oranges'];
+  nlist1.forEach((item) {
+    print('${nlist1.indexOf(item)}: $item');
+  });
 }
+
 void foo() {} // A top-level function
 
 class A {
   static void bar() {} // A static method
   void baz() {} // An instance method
 }
-void operators(){
+
+void operators() {
   //算数运算符
   assert(2 + 3 == 5);
   assert(2 - 3 == -1);
@@ -93,23 +101,24 @@ void operators(){
   assert(5 ~/ 2 == 2); // Result is an int
   assert(5 % 2 == 1); // Remainder
   assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
-  int a=0;
-  int b,c;
-  b=a++;
-  c=--b;
+  int a = 0;
+  int b, c;
+  b = a++;
+  c = --b;
   print('a、b、c的值分别为：$a  $b  $c');
   //类型判断运算符
-  var student = Person();
-  (student as Person).name = "Jack";
-  if(student is Person){
-    student.age = 17;
-  }
+  // var student = Person();
+  // (student as Person).name = "Jack";
+  // if(student is Person){
+  //   student.age = 17;
+  // }
 }
-void main(List<String> args){
-    //变量
-    variables();
-    builtinTypes();
-      Function x;
+
+void main(List<String> args) {
+  //变量
+  variables();
+  builtinTypes();
+  Function x;
 
   // Comparing top-level functions.
   x = foo;
@@ -134,4 +143,3 @@ void main(List<String> args){
   assert(v.baz != w.baz);
   operators();
 }
-
